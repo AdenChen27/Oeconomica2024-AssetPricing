@@ -7,7 +7,8 @@
 
 
 
-\title[AP-Lec01]{Asset Pricing Lecture 01: Mathematical Foundations}
+
+\title[AP-Lec01]{Asset Pricing: Mathematical Foundations}
 \author{Aden Chen}
 
 
@@ -18,6 +19,11 @@
 \tableofcontents
 
 \section{Derivatives: A One-Dimensional Recap}
+
+
+\blfootnote{Date: \today}
+\blfootnote{The most recent version of this document can be found \href{https://github.com/AdenChen27/Oeconomica2024-AssetPricing/blob/main/autumn/math-foundations.pdf}{here}.}
+
 
 \begin{definition}
   Let \(f: \RR \supset \Omega \to \RR\). 
@@ -98,16 +104,99 @@
   \end{align*}
 \end{theorem}
 
+\section{Lagrangian: An Example}
+\subsection{The Utility Maximization Problem}
+The problem:
+\[
+  v(p_x, p_y, m) \coloneqq
+  \max_{x, y} U(x, y) \quad \text{s.t.} \quad p_x x + p_y y = m . 
+\] 
+
+\subsection{Interpretation}
+We want to maximize 
+\[
+  \d U = U_x \d x + U_y \d y 
+\] 
+such that 
+\[
+  p_x \d x + p_y \d y = 0 \implies 
+  \d y = - \frac{p_x}{p_y} \d x . 
+\] 
+This gives 
+\[
+  \d U = \left[ U_x - U_y \cdot \frac{p_x}{p_y} \right] \d x . 
+\] 
+% This tells ``what we should do.''
+% If \(\left[ \cdot \right] > 0\), then set \(\d x > 0\) (buy more \(x\)), etc. 
+We can rewrite these two expressions in the following forms:
+\begin{itemize}
+  \item Set \(\d x > 0\) if \(U_x / U_y > p_x / p_y\). 
+    \[
+      \left[ \frac{U_x}{U_y} - \frac{p_x}{p_y} \right] U_y \dd x
+    \] 
+    ``Take advantage of all trading opportunities.''
+
+  \item Set \(\d x > 0\) if \(U_x / p_x > U_y / p_y\). 
+    Note that \(U_x / p_y\) is marginal utility of money \emph{spent on \(x\)}. 
+    \[
+      \left[ \frac{U_x}{p_x} - \frac{U_y}{p_y} \right] p_x \dd x
+    \] 
+    ``Bang for your buck.''
+    
+  \item Set \(\d x > 0\) if \(U_x > U_y \cdot p_x / p_y\). 
+    Note that \(U_x\) is the marginal benefit of buying \(x\) and \(U_y \cdot p_x / p_y\) is the marginal cost of buying \(x\). 
+    \[
+      \left[ U_x - U_y \cdot \frac{p_x}{p_y} \right] \d x
+    \] 
+    ``Trade until marginal cost equals marginal benefit.''
+\end{itemize}
+In the last expression, if we write 
+\[
+  \lambda = \frac{U_y}{p_y}, 
+\] 
+(think marginal utility of income) we have that at optimum, 
+\begin{gather*}
+  (U_x - \lambda p_x) \d x = 0 , \\ 
+  \lambda = \frac{U_y}{p_y} \iff U_y - \lambda p_y = 0 , \\ 
+  p_x x + p_y y = m . 
+\end{gather*}
+These three equalities describe precisely the critical points of the following 
+\[
+  \cL(p_x, p_y, \lambda) \coloneqq
+  U(x, y) + \lambda \left[ m - p_x x - p_y y \right], 
+\] 
+called the \vocab{Lagrangian}. 
+That is, setting 
+\[
+  \frac{\partial \cL}{\partial x} = \frac{\partial \cL}{\partial y} = \frac{\partial \cL}{\partial \lambda} = 0
+\] 
+recovers the above three equations. 
+
+\begin{remark}~
+  \begin{itemize}
+    \item We are not maximizing the Lagrangian but utility level (subject to given constraint).
+    \item \(\lambda\) might be negative or zero. 
+      Think bliss point. 
+  \end{itemize}
+\end{remark}
+
 
 \section{Taylor Expansion}
 \begin{definition}
   The Taylor polynomial of degree \(n\) of the function \(f\) around point \(a\) is given by 
   \[
-    f(a + x) = \sum_{k = 1}^{n} \frac{f^{(n)}(a)}{k!} \cdot x^{k} . 
+    P(a + x) = \sum_{k = 1}^{n} \frac{f^{(n)}(a)}{k!} \cdot x^{k} . 
   \] 
   It has the same \(k\) derivatives as \(f\). 
   Think ``\(k\)th order approximation.``
 \end{definition}
+\begin{remark}
+  We will often use the first or second order approximation starting from a given point \(a\):
+  \begin{align*}
+    f(a + h) &\approx f(a) + f'(a) h, \\
+    f(a + h) &\approx f(a) + f'(a) h + f''(a) h^2. 
+  \end{align*}
+\end{remark}
 
 
 
@@ -140,6 +229,7 @@
 \begin{proposition}~
   \begin{itemize}
     \item \(\E\) is linear. 
+      That is, \(\E[a + bX] = a + b \E[X]\) for \(a, b \in \RR\). 
     \item \(\Var(X) = \E(X^2) - \E(X)^2\) and 
       \(\Var(a + bX) = b^2 \Var(X)\). 
     \item \(\Cov(X, Y) = \E(XY) - \E(X) \E(Y)\). 
