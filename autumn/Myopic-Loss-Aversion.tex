@@ -24,7 +24,7 @@ The essence of the previous few lectures may be summarized as follows:
     \[
       u(x) = \frac{x^{1 - \gamma}}{1 - \gamma}.
     \] 
-    We estimate the parameter \(\gamma\) using real world decisions.
+    We estimate the parameter \(\gamma\) using real world data.
   \item We construct an economy with identical agents specified above and determine the equilibrium condition: since all agents are identical, at equilibrium there is no trade, and individuals maximize their utility.
     It turns out that this happens precisely when the asset price is equal to the present discount expected return of the asset, so we determine the asset price to be precisely this value.
   \item We compare the real-world asset price to that of the model and found the former to be much, much higher --- the asset premium puzzle.
@@ -134,36 +134,37 @@ Prospect theory is the leading alternative to expected utility theory.
 
 Properties:\footnote{The interested may read \textcite{kahneman2013prospect} for more details.}
 \begin{itemize}
-  \item A reference point: \(u\) is a function not of wealth, but of the change in wealth.
+  \item A reference point: \(u\) is a function not of wealth, but of the change in wealth. 
+    It is defined over gains and losses.
+  \item Risk averse over gains and risk seeking over losses (concave on \((0, \infty)\) and convex on \((-\infty, 0)\)).
   \item Loss aversion. 
+    Losses are weighted more heavily than gains.
 \end{itemize}
-We then have the utility function over lotteries, \(U\), given by
-\[
-  U(G) = \sum \pi(p) u(x),
-\] 
-where
-\begin{itemize}
-  \item \(\pi(p)\) is the probability weighting function,
-  \item \(u(x)\) is the utility function on gains and losses.
-\end{itemize}
-
-In \textcite{Benartzi1995Myopic}, 
+A prospect theory utility function can be modeled by
 \[
   u(x) = \begin{cases}
     x^{\alpha}, & x \geq 0, \\ 
-    -\lambda (-x)^{\beta}, & x \geq 0. 
+    -\lambda (-x)^{\beta}, & x < 0
   \end{cases}
 \] 
-with the previously\footnote{\textcite{Tversky1992Advances}} estimated parameters \(\alpha = \beta = 0.88\) and \(\lambda = 2.25\). 
-
-
+where
 \begin{itemize}
-  \item \(\lambda\) captures loss aversion.
-  \item concave when \(x \geq 0\) and convex when \(x \leq 0\) (Risk aversion)
-  \item \(x\) is change, not absolute levels of wealth. (reference dependent; risk aversion)
-  \item \(\alpha = \beta < 1\). Diminishing sensitivity. 
-  \item A sense of framing: gains and losses change when the reference point changes (or, in the case of investment, when the time period for evaluation changes).
+  \item \(\alpha, \beta < 1\) gives diminishing marginal utility of gains and losses,
+  \item \(\lambda > 1\), the loss aversion factor, captures the idea that losses are weighted more heavily than gains.
 \end{itemize}
+
+Using \(u\), we may, just as expected utility theory, define a utility function over lotteries \(U\) as 
+\[
+  U(G) = \sum p u(x),
+\] 
+or alternatively, pass the probabilities through a ``subjective probability weighting function'' \(\pi\) that captures the idea that people overweight small probabilities and underweight large probabilities:
+\[
+  U(G) = \sum \pi(p) u(x).
+\] 
+
+\subsection{A Return to the Equity Premium Puzzle}
+\Textcite{Benartzi1995Myopic}, using the previously estimated\footnote{\textcite{Tversky1992Advances}} parameters \(\alpha = \beta = 0.88\) and \(\lambda = 2.25\) redid the analysis we covered in the previous few lectures.
+
 
 
 \subsection{Myopic Loss Aversion}
