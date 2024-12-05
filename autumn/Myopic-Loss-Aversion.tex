@@ -1,0 +1,212 @@
+\documentclass[oneside,reqno,letterpaper]{amsart}
+\usepackage[plain]{/Users/aden/Library/CloudStorage/Box-Box/latex/adenc}
+\usepackage{silence} % for suppressing warnings
+\WarningFilter{mdframed}{You have requested package}
+
+\usepackage[natbib=true, style=apa, backend=biber]{biblatex}
+\addbibresource{Myopic-Loss-Aversion-ref.bib}
+
+
+\title[MFE: Behavioral Economics Notes]{MFE: Behavioral Economics Notes}
+\author{Aden Chen}
+
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\section{Review}
+The essence of the previous few lectures may be summarized as follows:
+\begin{enumerate}[label=(\roman*)]
+  \item We model an asset as a lottery with multiple uncertain outcomes.
+  \item We specified a decision making model: people make decisions according to expected utility (they have a von Neumann-Morgenstern utility function). 
+    More specifically, we postulated that they have constant risk aversion and thus have the constant risk aversion utility function
+    \[
+      u(x) = \frac{x^{1 - \gamma}}{1 - \gamma}.
+    \] 
+    We estimate the parameter \(\gamma\) using real world decisions.
+  \item We construct an economy with identical agents specified above and determine the equilibrium condition: since all agents are identical, at equilibrium there is no trade.
+    The price of the asset is then the price at which there is no trade.
+  \item We compare the real-world asset price to that of the model and found the former to be much, much higher --- the asset premium puzzle.
+    Alternatively, we may think of the puzzle as follows:
+    to obtain an asset price comparable to that observed in the real world, we need an absurdly large \(\gamma\).
+\end{enumerate}
+
+
+\section{Understanding the parameter gamma}
+Consider the lottery \([11, 10; .5, .5]\) (that is, the individual gets \(11\) dollars with probability \(0.5\) and \(10\) dollars with probability \(0.5\)) in the standard expected utility framework.
+The following table gives the minimum \(\gamma\) under which the agent rejects the lottery at different levels of wealth \(w\).
+
+\begin{tabular}{ c c } 
+  Rejects at \(w=\) & \(\gamma > \) \\ 
+\hline
+  \num{1000} & 9 \\ 
+  \num{2000} & 18 \\ 
+  \num{5000} & 45 \\ 
+\end{tabular}
+
+Estimate your own \(\gamma\) by considering the lottery \([11, 10; .5, .5]\) and your own wealth!
+Given that many would reject such a gamble, we would expect \(\gamma\) to be relatively large.
+
+
+Next, consider the lottery \([50000, 100000; .5, .5]\) (the individual gets \(50000\) dollars with probability \(0.5\) and \(100000\) dollars with probability \(0.5\)).
+
+\begin{tabular}{ c c } 
+  \(\gamma\) & \(W_{CE}\) \\ 
+\hline
+  1 & \num{70711} \\ 
+  2 & \num{66667} \\ 
+  5 & \num{58566} \\ 
+  10 & \num{53991} \\ 
+  30 & \num{51209} \\ 
+\end{tabular}\footnote{Table taken from \textcite{Schilbach2020Lecture}. }
+Estimate again your \(\gamma\) and compare it to the previous estimate.
+Note the disparity!
+
+In fact, we can show mathematically that if a risk averse expected utility maximizer rejects the small gamble \([11, 10; .5, .5]\) at any \(w\), then she will reject a \([-100, \infty]\) lottery.\footnote{
+\[
+  10^{-4} > (10 / 11)^{100} \implies u'(w + 2100) \leq 10^{-4} u'(w) . 
+\] 
+}
+
+Now, one immediate idea to fix our decision model would be to say that \(\gamma\) (or even the utility function \(U\)) is not fixed.
+Preferences and perceptions of / attitudes to risk changes.
+This is, however, a dangerous approach.
+We are pushing sweep something under the rug, so to speak.
+Unless we develop we develop a theory of how the utility function or \(\gamma\) changes, we can, by changing \(U\) or \(\gamma\), explain everything --- and thus nothing.
+
+Before moving on to a potential resolution, let us first get a fuller picture of why expected utility theory might fail.
+We've already seen the problem of risk aversion above --- people seem to be exhibit radically different risk preferences in face of different gambles.
+There are but only more problems:
+
+
+\section{Problems with Expected Utility Theory}
+\subsection{Loss Aversion}
+Compare the following lotteries:
+\begin{itemize}
+  \item \([4000; .8]\) and \([3000, 1]\) (that is, getting \(4000\) dollars with probability \(0.8\) or a sure gain of \(3000\) dollars) --- most prefer the latter
+  \item \([-4000; .8]\) and \([-3000, 1]\) --- most prefer the former
+\end{itemize}
+People seem to be risk-averse for gains and risk-loving for losses.
+\footnote{\Textcite{Schilbach2020Lecture}. }
+
+
+\subsection{Framing and Reference Point}
+Compare the following:
+\begin{itemize}
+  \item \([240, 1]\) and \([1000; .25]\) (a sure gain of \(240\) dollars or a gain of \(1000\) dollars with probability \(0.25\))
+  \item \([-750, 1]\) and \([-1000; .75]\). 
+\end{itemize}
+Most preferred the former in the first case and the latter in the second case, the this combination (\([-760, 240; .75, .25]\)) is in fact dominated by choosing the former in the first case and the former in the second case (\([-750, 250; .75, .25]\))!
+
+How the lotteries are framed matters.
+(Some call the aggregation of multiple lotteries ``bracketing''.)
+
+
+\subsection{Endowment Effect, Status Quo Bias}
+We can measure how valuable an object is to someone by asking:
+\begin{itemize}
+  \item how much they are willing to pay (WTP) to get the object; or
+  \item how much they are willing to accept (WTA) as compensation for giving up the object.
+\end{itemize}
+(You might also know them as \(EV\) and \(CV\) if you've taken Econ here.)
+
+In the expected utility framework, we would expect \(WTP \approx WTA\).
+
+A \Textcite{Kahneman1991Endowment} experiment, however, showed otherwise:
+\begin{itemize}
+  \item Cornell mugs given randomly to half of the students. 
+  \item On average we expect half of the mugs to be traded.
+  \item Typically \(WTP \approx 1 / 2 WTA\) and around half of trading volume was observed. 
+\end{itemize}
+Owning (being endowed) the mug seems to cause the students to assign it a higher value.
+This is termed the endowment effect.
+
+
+
+\section{Prospect Theory}
+Prospect theory is the leading alternative to expected utility theory.
+
+Properties:
+\begin{itemize}
+  \item A reference point: \(U\) is a function not of wealth, but of the change in wealth.
+  \item Loss aversion. 
+\end{itemize}
+\[
+  V(G) = \sum \pi(p) v(x),
+\] 
+where
+\begin{itemize}
+  \item \(\pi(p)\) is the probability weighting function,
+  \item \(v(x)\) is the value function.
+\end{itemize}
+The interested should Google.
+
+In \textcite{Benartzi1995Myopic}, 
+\[
+  v(x) = \begin{cases}
+    x^{\alpha}, & x \geq 0, \\ 
+    -\lambda (-x)^{\beta}, & x \geq 0. 
+  \end{cases}
+\] 
+with the previously\footnote{\textcite{Tversky1992Advances}} estimated parameters \(\alpha = \beta = 0.88\) and \(\lambda = 2.25\). 
+
+
+\begin{itemize}
+  \item \(\lambda\) captures loss aversion.
+  \item concave when \(x \geq 0\) and convex when \(x \leq 0\) (Risk aversion)
+  \item \(x\) is change not absolute value. (reference dependent; risk aversion)
+  \item \(\alpha = \beta < 1\). Diminishing sensitivity. 
+  \item There is a sense of framing: gains and losses change when the relevant time period changes.
+\end{itemize}
+
+% Recall in expected utility theory, the utility of a gamble \(G\) is given by
+% \[
+%   V(G) = \E[x] = \sum \Pr[x_i] v(x_i) . 
+% \] 
+
+
+\subsection{Myopic Loss Aversion}
+The pairing of prospect theory with framing (frequent evaluation of portfolio) is called myopic loss aversion. 
+
+Previous research: how risk averse would the representative investor have to be to explain the historical equity premium. 
+\Textcite{Benartzi1995Myopic}: given these estimated parameters of prospect theory, what evaluation period is consistent with the equity premium? 
+
+One year. This is highly plausible, given the existence of annual reports, and the tex filings, when one would gain a comprehensive evaluation. 
+
+
+\subsection{Which aspects of prospect theory drive the results?}
+Loss aversion. 
+Using the identity function as the probability weighting function, 11--12 months to 10 months. 
+Using piecewise linear utility function with loss aversion factor \(2.25\), 8 months.
+
+
+\subsection{Objections}
+A potential objection. 
+Individual decision making vs.\ organization decision making. 
+The issue of agency. 
+
+
+
+
+\section{Additional Topics (if time permits)}
+\begin{itemize}
+  \item Hyperbolic Discounting. 
+  \item Mental Accounting. 
+\end{itemize}
+
+
+
+
+
+\printbibliography
+
+
+
+
+
+\end{document}
+
+
+
+
