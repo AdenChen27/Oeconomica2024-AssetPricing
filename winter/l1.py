@@ -1,53 +1,63 @@
 """
-You should understand the following concepts after finishing this notebook:
-- variable, data type, number, string
-- type conversion
-- if statement, boolean statement
+# Variables and Basic Data Types
 
-This notebook is a very basic introduction to Python. It is meant to be run in a Jupyter notebook, but you may also run it in a Python interpreter.
-- Vocabulary are in **bold text**. Knowing them will be very useful for Googling.
-- Code snippets are in `monospace`.
-- Comments starts with the `#` symbol; they will be ignored by the Python interpreter.
-- Run all following cells, including the ones that would not work to familiarize yourself with the error messages.
+Note: These notebooks are designed to quickly introduce to *programming*, not *computer science*.
+
+- You do not need to know exactly how everything works, but make sure you have a rough idea of what each line of code means.
+- Your final goal is to know how to code (with aid of the Internet).
+- You may skip over all explanation, but do run all the code.
+- The explanations are terse. If you have question, Google. If you don't, find some question to Google.
+
+Knowing how to Google and ChatGPT is vary useful, but to be a Good Googler, you'll need to know the correct vocabulary, which is displayed in **bold** in this notebook.
+
+After completing this notebook, you should:
+- have a rough sense of what a **variable** is
+- understand basic **data types** (numbers and strings) and **type conversion**
+- know how to perform basic numerical operations (addition, multiplication, division, etc) and string concatenation
+- know the `print` function
 """
 
 """
-The `print` function displays values of variables or constants onto thee screen.
+The `print` function displays values of variables or constants onto the screen.
+This is useful for debugging and displaying outputs for the user.
 """
 print("Hello world")
 
-
 """
 # Variables and Basic Types
-It is at times useful to think of variables as places to store values. The variable `x` refers to a certain space, `y` another. You may change the values stored in these spaces, but before doing that, you need to define the variables.
-To define an variable, we use the command `variable_name = value`. Note that you are also assigning a value to that variable.
-Basic **data types** include numbers (`int` and `float`), and strings (`str`)
-First, we look at numbers.
+In Python, **variables** are used to store values. You can think of a variable as a container that holds data.
+A variable is defined by giving it a name and assigning a value using the assignment operator `=`.
+
+Basic **data types** include numbers (`int` for integers and `float` for floating-point numbers), and strings (`str` for string).
+
 ## Numbers (`int` and `float`)
 """
+# Integer
 myint = 7
 print(myint)
 
+# Float (decimal number)
 myfloat = 7.0
 print(myfloat)
 
 """
-Some operations you can do with numbers
+You can perform operations on numbers such as addition, subtraction, multiplication, and division.
 """
+# Basic operations
 one = 1
 two = 2
 three = one + two
 print(three)
 
-"""
-Some more operations
-"""
+# More complex operations
 number = 1 + 2 * 3 / 4.0
 print(number)
 
+# Modulo operation - remainder of a division
 remainder = 11 % 3
 print(remainder)
 
+# Exponentiation
 squared = 7 ** 2
 cubed = 2 ** 3
 print(squared)
@@ -56,59 +66,68 @@ print(cubed)
 """
 ## Strings (`str`)
 
-The second basic data type in python is **string** (`str`), which represent a sequence of characters.
-Strings are enclosed in (either single or double) quotation marks.
+**Strings** represent sequences of characters, like words or sentences.
+Strings can be enclosed in single quotes `'` or double quotes `"`.
+
 """
 mystring = 'hello'
 print(mystring)
+
 mystring = "hello"
 print(mystring)
 
+# Handling apostrophes in strings
 mystring = "Don't worry about apostrophes. If you want an apostrophe (single quotation mark) in your string, just use double quotation marks to enclose the string."
 print(mystring)
 
 """
-You may concatenate multiple strings using `+`.
+You can concatenate (combine) strings using the `+` operator.
 """
 hello = "hello"
 world = "world"
 helloworld = hello + " " + world
 print(helloworld)
 
-
 """
 ## Converting types
+
+Sometimes, you might need to convert a variable from one **data type** to another. 
+In Python, you can do this using type conversion functions, such as `int()`, `float()`, and `str()`.
+
 """
-# Since not all variables are strings, the following will not work!
+# Trying to add an integer and a string (this will cause an error)
 one = 1
 two = 2
 hello = "hello"
 
-print(one + two + hello)
+# Uncomment the line below to see the error
+# print(one + two + hello)  # This will give an error because you cannot add a string and integers directly
 
 """
-You can convert between types using `typename(variable)`.
-Type names include `int` for integer, `float` for floating point numbers, and `str` for strings.
+You can convert between types using functions like `int()`, `float()`, and `str()`.
 """
 number = 15
 print(str(number))
 print(float(number))
-"""
-"""
+
 string = "10"
 print(int(string))
 print(float(string))
+
 print(float("10.123"))
 
 """
-Of course, you can only convert a string into a number if the string may be interpreted as a number (resp. integer).
-For example, the following will not work. Try them!
+Of course, you can only convert a string into a number if the string can be interpreted as a valid number.
+For example, the following will not work because "abc" cannot be converted into a float or integer.
+
+Try to run these lines to see the error!
 """
 print(float("abc"))
 print(int("10.282"))
 
 """
-A note on types: you may check the type of a variable using the `type` function. This is very useful when debugging.
+A note on types: You can check the type of a variable using the `type()` function.
+This is very useful for debugging and understanding what kind of data you're working with.
 """
 a = 1
 b = 1.0
@@ -118,84 +137,13 @@ print(type(b))
 print(type(c))
 
 
-"""
-# Conditionals
-In this section we learn the `if` statement. It is often paired with one of multiple `elif` (else if) statements, and an `else` statement.
-We first distinguish between the `==` and `=` operators. The former is used to compare two values, while the latter is used to assign a value to a variable.
-"""
-x = 2
-print(x == 2)
-print(x == 3)
-print(x < 3)
-"""
-Note that python will evaluate the **boolean statements** `x == 2` etc. to produce a boolean value --- a `True` or a `False`. To check this we again use the `type` function.
-"""
-print(type(x == 2))
 
 """
-You may use `and` and `or` to combine multiple boolean statements, and `not` to negate a boolean statement.
-Use parentheses to make your code more readable.
-"""
-x = 2
-y = 3
-print(x == 2 and y == 3)
-print(x == 2 and y == 4)
-print(x == 2 or y == 4)
-print(x == 3 or y == 4)
-print(not x == 3)
-print((not x == 2) and y == 3)
+# Exercise:
 
-
+Write code that performs the following:
+- create a new variable `x`, with value 2
+- set `y` to 2^(x^(x^x)), where ^ stands for exponentiation. Note: 2^(x^(x^x)) is not a valid Python expression (at least it does not mean what you think it means), so turn it into one.
+- convert `y` into a string and print it
 """
-"""
-name = "John"
-age = 23
-if name == "John" and age == 23:
-    print("Your name is John, and you are also 23 years old.")
-
-if name == "John" or name == "Rick":
-    print("Your name is either John or Rick.")
-
-"""
-"""
-name = "John"
-if name in ["John", "Rick"]:
-    print("Your name is either John or Rick.")
-
-"""
-"""
-statement = False
-another_statement = True
-if statement is True:
-    # do something
-    pass
-elif another_statement is True: # else if
-    # do something else
-    pass
-else:
-    # do another thing
-    pass
-
-"""
-"""
-x = 2
-if x == 2:
-    print("x equals two!")
-else:
-    print("x does not equal to two.")
-
-"""
-"""
-x = [1,2,3]
-y = [1,2,3]
-print(x == y) # Prints out True
-print(x is y) # Prints out False
-
-"""
-"""
-print(not False) # Prints out True
-print((not False) == (False)) # Prints out False
-
-
-
-
+pass # this is just a placeholder for you code
