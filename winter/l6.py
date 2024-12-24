@@ -54,11 +54,56 @@ for i, row in benchmark.iterrows():
 print((benchmark["human-labeled-outcome"] == benchmark["model-prediction"]).sum() / len(benchmark))
 
 """
-# Task 6: Real Data
+# Task 6: Democracy
 
 Load the `electoral-democracy-index.csv` file, which contains data on V-Dem's country/year-level democracy index.
 
-Locate the data for United States. Find the average democracy score for united states in the 18th, 19th, 20th, and 21th centuries.
-Compare them.
+- Locate the data for United States. Find the average democracy score for united states in the 18th, 19th, 20th, and 21th centuries. Compare them.
+- In what year did the US achieve its highest democracy score? The lowest?
+"""
+pass
+
+"""
+# Task 6: Democratic Backsliding?
+
+Some claim that a global democratic decline has been happening over the past few decades.
+We evaluate this claim using V-Dem's democracy index.
+
+Follow the steps below:
+- Come up with a measure of democratic backsliding in the past 20 years. This should be a function that takes in the past 20 years of democracy scores for a given country and outputs a single score representing the extent of democratic backsliding for that country. Think of what you might want in such a measure.
+- Aggregate the DataFrame that contains democracy score for each country/year to a DataFrame that contains a "backsliding" index for each country. That is, for each country you are aggregating the democracy indexes over the years to one single backsliding index. After this step, you should have a DataFrame that looks something like:
+
+    ```
+    Country 1 | backsliding index 1
+    Country 2 | backsliding index 2
+    Country 3 | backsliding index 3
+    ...
+    ```
+
+    - Hint 1: use the `DataFrame.aggregate` method with a `func` you defined above.
+    - Hint 2: it is often useful to test the functions on a smaller DataFrame when debugging.
+
+- Now find the countries with the most amount of democratic backsliding. (Hint: use the `DataFrame.sorrt_values` function.) 
+"""
+pass
+
+
+"""
+# Task 7: Democratic Backsliding (continued)?
+
+Democratic backsliding is obviously occurring in *some* countries. But do we have evidence for a *global* democratic backsliding?
+You may test this by looking at the average of the "backsliding" score (which you created in the previous task), but this gives each country the same weight. One way to get a global "backsliding" score is to weight each country by its population.
+To make life easier, we will use only the indexes for each continent in the dataset.
+
+Follow the steps below:
+- Load `population.csv`, which contains data on countries and continents.
+- Note that some continents are named differently in the population dataset and in the democracy index dataset. Rename the relevant column of one of these datasets so that the two datasets have the same names.
+
+    Hint: Use a dictionary to store a mapping from the old names to the new (matching) names (e.g. from "Africa (UN)" to "Africa"), and use `.apply` on the column storing names to change old names to the corresponding new names.
+- Merge the two datasets so you have the population and democracy index data in the same DataFrame.
+    
+    Hint: Google `DataFrame.join` and `DataFrame.merge`.
+
+- Calculate a population-weighted "backsliding" score for the past 20 years. Is there a global democratic backslide?
 """
 pass
