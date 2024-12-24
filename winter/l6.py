@@ -1,5 +1,5 @@
 """
-# Pandas
+# Pandas: Data Manipulation
 
 Starting from this notebook, there will be a lot less explanation.
 Instead, you will be given a sequence of tasks, and you will Google you way through these tasks.
@@ -39,6 +39,26 @@ pass
 # Task 4: Data Manipulation
 
 - Create a new column "remaining income", with value `salary * (80 - age)`
-- Do the above using two methods: (1) use a for loop with iterrows; (2) use the DataFrame `apply` method. Make sure you understand both methods.
+- Do the above using two methods: (1) use a for loop with iterrows; for a hint, see Task 5. (2) use the DataFrame `apply` method. Make sure you understand both methods.
+"""
+pass
+
+"""
+# Task 5: 
+
+Guess what the following code snippet does:
+"""
+for i, row in benchmark.iterrows():
+    benchmark.at[i, "model-prediction"] = classifier.classify_case(row["dir"])
+
+print((benchmark["human-labeled-outcome"] == benchmark["model-prediction"]).sum() / len(benchmark))
+
+"""
+# Task 6: Real Data
+
+Load the `electoral-democracy-index.csv` file, which contains data on V-Dem's country/year-level democracy index.
+
+Locate the data for United States. Find the average democracy score for united states in the 18th, 19th, 20th, and 21th centuries.
+Compare them.
 """
 pass
