@@ -3,12 +3,14 @@
 
 Starting from this notebook, there will be a lot less explanation.
 Instead, you will be given a sequence of tasks, and you will Google you way through these tasks.
-(Hint: start by googling the terms in **bold**.)
-(Hint 2: the official pandas documentation should be your fwend.)
+
+Hint 1: start by googling the terms in **bold**.
+
+Hint 2: the official pandas documentation should be your fwend.
 """
 """
 # Task 1:
-- Go find out what a **.csv** file is.
+- Find out what a **.csv** file is.
 - Open the csv file `salary-data.csv` using a **text editor** of your choice.
 - **Load/Read** the csv file about using pandas into a DataFrame called `df` (hint: use the **`pd.read_csv`** function. Pay attention to the `header` argument.)
 """
@@ -92,7 +94,9 @@ pass
 # Task 7: Democratic Backsliding (continued)?
 
 Democratic backsliding is obviously occurring in *some* countries. But do we have evidence for a *global* democratic backsliding?
-You may test this by looking at the average of the "backsliding" score (which you created in the previous task), but this gives each country the same weight. One way to get a global "backsliding" score is to weight each country by its population.
+You may test this by looking at the average of the "backsliding" score (which you created in the previous task), but this gives each country the same weight (the experience of citizens living in smaller countries are then arguably over-weighted).
+One way to get a global "backsliding" score is to weight each country by its population.
+This will weight the experience of citizen in each country equally.
 To make life easier, we will use only the indexes for each continent in the dataset.
 
 Follow the steps below:
