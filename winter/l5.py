@@ -70,7 +70,7 @@ It is good practice to wrap often-used pieces of code in functions!
 
 Define a function that takes in two numbers as input and outputs their product.
 """
-pass
+#EMPTYCELL
 
 """
 # Exercise 2

@@ -1,36 +1,35 @@
 """
 # Pandas: Data Visualization
 """
-
 """
-# Task 1: Warm up
+# Warm up
 
 Install `matplotlib` and use it to plot the following functions:
 - $f(x) = x - 1$
 - $f(x) = x^7 - x^5$
 - $f(x) = \sin(x)$
 """
-pass
+#EMPTYCELL
 
 """
-# Task 2: Democracy of the US
+# Democracy of the US
 
 Load the `electoral-democracy-index.csv` file, which contains data on V-Dem's country/year-level democracy index.
 - Plot United States data over the years as a line plot.
 - Fit a polynomial of degree 4 through the data.
 - Clearly label you graph.
 """
-pass
+#EMPTYCELL
 
 """
-# Task 3: A Comparison
+# A Comparison
 
 Create a new graph, comparing the democracy scores of the US and the UK (plot data of both countries in the same plot).
 """
-pass
+#EMPTYCELL
 
 """
-# Task 4: Probability
+# Probability
 
 (Stolen from Dan Nicolae)
 
@@ -41,25 +40,25 @@ draws. Create a scatter plot of $X_1 − X_2$ versus $\min(X_1, X_2)$.
 
 Hint: use `numpy.random.exponential` to generate random variables following the exponential distribution.
 """
-pass
+#EMPTYCELL
 
 
 """
-# Task 5: GDP
+# GDP
 
 Load the `gdp-per-capita-worldbank.csv` dataset.
 Plot United States's GDP per capita using a line plot.
 
 GDP data taken from World Bank (2023) – with minor processing by Our World in Data.
 """
-pass
+#EMPTYCELL
 
 
 """
-# Task 6: Save Your Work
+# Save Your Work
 
 Find a way to save your graphs. Do you graphs look blurry? Fix it.
 
 Hint: There are two approaches: (1) increase dpi, (2) store your plot as a vector image. If you want to include you plots into LaTeX files, look into `.pgf` image files.
 """
-pass
+#EMPTYCELL

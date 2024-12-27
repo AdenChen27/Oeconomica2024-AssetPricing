@@ -1,59 +1,79 @@
 """
-# Scraping the Web
-
-In this notebook, we attempt to scrap UChicago's Course Catalog.
+# Regression Analysis
 """
-
-"""
-### From URL to HTML
-
-Go to [UChicago's Economics Catalog](http://collegecatalog.uchicago.edu/thecollege/economics/) and **inspect** the page (Google how to do it).
-"""
-from urllib.request import urlopen
-url = r"http://collegecatalog.uchicago.edu/thecollege/economics/"
-page = urlopen(url)
-
-html = page.read().decode("utf-8")
-html
+import numpy as np
+import pandas as pd
 
 """
-### What are we finding?
+# Shape
+Given a `numpy` array `A`, what does `A.reshape((a, b))` do?
 
-Suppose we want to scrap the names of all courses.
-Inspect again the webpage.
-In what HTML tags are the names located?
-"""
-from bs4 import BeautifulSoup
-soup = BeautifulSoup(html, "html.parser")
-soup.find_all("p",  {"class": "courseblocktitle"})
+What does `A.reshape((-1, 1))` do? In what way is `A.reshape((-1, 1))` different from `A`?
 
+Hint: one is a matrix, the other a vector.
 """
-### 
-"""
-course_titles = []
-for a in soup.find_all("p",  {"class": "courseblocktitle"}):
-    course_titles.appen(a.find("strong").text)
+A = np.array([1, 5, 10, 14, 31, 22, 27, 72])
 
 
 """
-# Task 1: Cleaning
+# `Smoke`
 
-`course_titles` includes not just the name of the courses, but also the course numbers and units worth.
-Clean the data so we have just a list of course names left.
-
-Hint: course number, course name, and units are all separated by a single period.
+Explore the `smoke` data set from Wooldridge.
+Read [this](http://fmwww.bc.edu/ec-p/data/wooldridge/smoke.des).
+Produce a scatter plot of smoking behavior and income.
 """
-pass
+df = pd.read_csv("smoke.csv")
+
 
 """
-# Task 2: DOI
+# Simple Regression Analysis
 
-Many scientific papers have corresponding DOIs that can be used to uniquely identify them.
-Crossref provides a free API that takes in a doi and output the metadata of the associated paper.
-
-Check out for example:
-[`https://api.crossref.org/works/10.3386/w4509`](https://api.crossref.org/works/10.3386/w4509).
-
-Write a script that takes in a DOI and outputs the authors of the associated paper.
+The following code runs a simple regression for `cigs` on `lincome`.
+(What does `"\t"` mean?)
 """
-doi = r"10.3386/w4509"
+from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+x = df["lincome"].to_numpy().reshape((-1, 1))
+y = df["cigs"].to_numpy()
+model.fit(x, y)
+
+r_sq = model.score(x, y)
+
+print(f"beta_0:\t{model.intercept_}")
+print(f"beta_1:\t{model.coef_}")
+print(f"R^2:\t{r_sq}")
+
+"""
+You've obtained $\beta_0$ and $\beta_1$ above.
+Calculate the predicted value $\hat{y}_i = \beta_0 + \beta_1 x_i$ for each of the entry in `df`.
+"""
+#EMPTYCELL
+
+"""
+Plot the following in the same graph:
+
+- The actual values of smoking vs income. (You have plotted this before. Just reproduce the graph).
+- The predicted values of smoking vs income for each entry in `df`.
+- The population regression function $E(y | x) = \beta_0 + \beta_1 x$. This should be a straight line.
+"""
+#EMPTYCELL
+
+"""
+### Covariance
+
+
+The residual $\hat{u}$ is the variation in $y_i$ not captured in our model, given by $\hat{u}_i = y_i - \hat{y}_i$.
+
+- Use to function to calculate, for each entry in `df`, the corresponding residual.
+- Calculate the sample covariance between the predicted value $\hat{y}_i = \beta_0 + \beta_1 x_i$ and the error $\hat{u}_i = y_i - \hat{y}_i$. Note its magnitude.
+
+Hint: use [`np.cov`](https://numpy.org/doc/stable/reference/generated/numpy.cov.html). (This function returns a matrix. How does the matrix relate to the covariance?)
+"""
+#EMPTYCELL
+
+
+"""
+You should obtain 0 (up to any small rounding error). In fact, we always have for any sample that $Cov(\hat{y}_i, \hat{u}_i) = 0$.
+The fitted values and the residuals are uncorrelated.
+"""

@@ -90,7 +90,7 @@ for number in range(1, 6):
 ## Exercise 2:
 Run a for loop on a dictionary. What happens? What are you looping over?
 """
-pass
+#EMPTYCELL
 
 """
 ## Exercise 3:
@@ -101,7 +101,7 @@ Hint 1: you do not need to use a list to store the relevant numbers.
 
 Hint 2: in each iteration, add to you sum one more number.
 """
-pass
+#EMPTYCELL
 
 """
 Hint 3:

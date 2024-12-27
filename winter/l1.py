@@ -146,4 +146,4 @@ Write code that performs the following:
 - set `y` to 2^(x^(x^x)), where ^ stands for exponentiation. Note: 2^(x^(x^x)) is not a valid Python expression (at least it does not mean what you think it means), so turn it into one.
 - convert `y` into a string and print it
 """
-pass # this is just a placeholder for you code
+#EMPTYCELL

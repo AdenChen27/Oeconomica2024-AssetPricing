@@ -203,8 +203,7 @@ Note that `range` returns a generator (you don't have to care too much about wha
 - Create a list using the `range` and `list` functions that contains all multiples of 7 from 1 to 7777.
 - Calculate the sum of these numbers and print it out. (Hint 1: you do not need `for` or `while`, which you will learn in the next notebook. Hint 2: Google. You just need one function that you've never seen.)
 """
-pass
-
+#EMPTYCELL
 
 """
 # Exercise 2
@@ -220,4 +219,4 @@ d = {"a": 1, "b": 2, "c": 3, "d": 4}
 
 - Go learn about the data type **set**.
 """
-pass
+#EMPTYCELL
