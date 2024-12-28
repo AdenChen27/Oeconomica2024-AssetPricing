@@ -59,8 +59,7 @@ Plot the following in the same graph:
 #EMPTYCELL
 
 """
-### Covariance
-
+## Covariance
 
 The residual $\hat{u}$ is the variation in $y_i$ not captured in our model, given by $\hat{u}_i = y_i - \hat{y}_i$.
 
@@ -71,7 +70,6 @@ Hint: use [`np.cov`](https://numpy.org/doc/stable/reference/generated/numpy.cov.
 """
 #EMPTYCELL
 
-
 """
 You should obtain 0 (up to any small rounding error). In fact, we always have for *any* sample that $Cov(\hat{y}_i, \hat{u}_i) = 0$.
 The fitted values and the residuals are uncorrelated.
@@ -79,14 +77,35 @@ The fitted values and the residuals are uncorrelated.
 Moreover, $Cov(\hat{u}_i, f(x_i)) = 0$ for any function $f$.
 This is known as the Conditional Expectation Function (CEF) Decomposition property.
 """
+
 """
+## Correlation
+
+Using $\beta_0$ and $\beta_1$, you can obtain estimated values of `cigs`, `predicted_cigs` as:
+$$
+    \text{predicted_cigs} = \beta_0 + \beta_1 \text{lincome}.
+$$
+
+- Create thus a new column called `predicted_cigs` in the DataFrame with the predicted values of cigs using the values of $\beta_0$ and $\beta_1$ you obtained.
+- Calculate the *square* of the correlation coefficient between `predicted_cigs` and `cigs`. Compare the value you get with the parameters of the model. What do you find?
+
+Hint: use [`np.corrcoef`](https://numpy.org/doc/stable/reference/generated/numpy.corrcoef.html). (This function returns a matrix. How does the matrix relate to the covariance?)
+"""
+#EMPTYCELL
+#ANSWER
+df["predicted_cigs"] = model.intercept_ + model.coef_[0]*df["lincome"]
+np.corrcoef(df["predicted_cigs"], df["cigs"])**2
+
+"""
+# Multiple Regression Analysis
+
 The [`statsmodels`](https://www.statsmodels.org/stable/index.html) module provides a much more convenient way to run regressions.
 """
 import statsmodels.formula.api as sm
 result = sm.ols(formula="cigs ~ lincome", data=df).fit()
 result.summary()
 """
-The above one line code, for example, runs the simple regression of `cigs` on `lincome` which you've done above.
+The above one line code, for example, runs the simple regression of `cigs` on `lincome` which you've done above. (You are asked to use `sklearn.linear_model import LinearRegression` previously to make sure you actually understand what coefficient and intercept means.)
 
 You can just as easily run multiple regressions, that is, regression on multiple explanatory variables:
 """
@@ -97,9 +116,9 @@ result.summary()
 """
 # Life Satisfaction
 
-Explore World Happiness Report's [`datasets/WorldHappinessReport2024_DataForTable2.1.csv`](https://worldhappiness.report/data/) dataset on world happiness (measured using the [Cantril ladder](https://news.gallup.com/poll/122453/understanding-gallup-uses-cantril-scale.aspx)).
+Explore World Happiness Report's [`datasets/WorldHappinessReport2024_DataForTable2.1.csv`](https://worldhappiness.report/data/) dataset on world happiness in 2024 (measured using the [Cantril ladder](https://news.gallup.com/poll/122453/understanding-gallup-uses-cantril-scale.aspx)).
 
-- Rename the columns (having spaces in names can be extremely annoying, as you may or may not experience if you ignore this step).
+- Rename the columns (having spaces in names can be extremely annoying, as you might or might not experience if you ignore this step).
     
     You may want to use the following dictionary for renaming.
     ```
@@ -188,4 +207,7 @@ result = sm.ols(formula="ladder ~ residual", data=df).fit()
 print(result.params["residual"])
 """
 This result is known as the Frisch-Waugh-Lovell theorem or the regression anatomy theorem.
+
+We thus have a new interpretation of $\beta_1$: 
+$residual$ is `logGDP` after the effect of `freedom` has been partialled out, and $\beta_1 = \beta_1'$ effect of `logGDP` on `ladder` after the effect of `freedom` has been partialled out.
 """
