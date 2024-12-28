@@ -11,7 +11,7 @@ Hint 2: the official pandas documentation should be your friend.
 """
 # csv
 - Find out what a **.csv** file is.
-- Open the csv file `salary-data.csv` using a **text editor** of your choice.
+- Open the csv file `datasets/salary-data.csv` using a **text editor** of your choice.
 - **Load/Read** the csv file about using pandas into a DataFrame called `df` (hint: use the **`pd.read_csv`** function. Do you need the `header` argument?)
 """
 import pandas as pd
@@ -101,7 +101,7 @@ print((benchmark["human-labeled-outcome"] == benchmark["model-prediction"]).sum(
 Some claim that a global democratic decline has been happening over the past few decades.
 We evaluate this claim using V-Dem's democracy index.
 
-First, load the `electoral-democracy-index.csv` file, which contains data on V-Dem's country/year-level democracy index. Use the [`head`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html) and [`tail`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.tail.html) functions to inspect the first and last few entries of the DataFrame.
+First, load the [`datasets/electoral-democracy-index.csv`](https://ourworldindata.org/democracy) file, which contains data on V-Dem's country/year-level democracy index. Use the [`head`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html) and [`tail`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.tail.html) functions to inspect the first and last few entries of the DataFrame.
 
 - Rename the column containing the democracy indices to something simpler.
 - Locate the data for United States. Find the average democracy score for united states in the 18th, 19th, 20th, and 21th centuries. Compare them.
@@ -109,7 +109,7 @@ First, load the `electoral-democracy-index.csv` file, which contains data on V-D
 """
 #EMPTYCELL
 #ANSWER
-df = pd.read_csv("electoral-democracy-index.csv")
+df = pd.read_csv("datasets/electoral-democracy-index.csv")
 df = df.rename(columns = {
     'Electoral democracy index (best estimate, aggregate: average)': "Democracy"
 })
@@ -194,9 +194,9 @@ One way to get a global "backsliding" score is to weight each country by its pop
 This will weight the experience of citizen in each country equally.
 
 Follow the steps below:
-- Load `population.csv`, which contains data on population data at the country-year level.
+- Load [`datasets/population.csv`](https://ourworldindata.org/population-growth), which contains data on population data at the country-year level.
 - Note that almost all country in this DataFrame matches that in the democracy index DataFrame. This is convenient for us. If the country names does not match (e.g. "USA" in one and "US" in another), we will have to rename the columns so that they match.
-- Merge the two datasets so you have the population and democracy index data in the same DataFrame. (The `population.csv` dataset contains population data for each year. For simplicity, let's just use the population in the year 2020 in our analysis.)
+- Merge the two datasets so you have the population and democracy index data in the same DataFrame. (The `datasets/population.csv` dataset contains population data for each year. For simplicity, let's just use the population in the year 2020 in our analysis.)
 
     Hint: Use [`DataFrame.join`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.join.html). You might have to change the indexes of one of the DataFrames so that both DataFrames have matching indexes.
 
@@ -204,7 +204,7 @@ Follow the steps below:
 """
 #EMPTYCELL
 #ANSWER
-popdf = pd.read_csv("population.csv")
+popdf = pd.read_csv("datasets/population.csv")
 popdf = popdf.rename(columns = {
     'Population - Sex: all - Age: all - Variant: estimates': "Population"
 })
@@ -221,4 +221,7 @@ np.dot(backsliding_df["Population"], backsliding_df["Backsliding"]) / backslidin
 
 """
 Assuming V-Dem's democracy index perfectly reflects the level of democracy, what else might go wrong in our analysis?
+"""
+"""
+We will conduct a more rigorous analysis using regression.
 """

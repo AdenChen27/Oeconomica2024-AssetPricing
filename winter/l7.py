@@ -1,6 +1,8 @@
 """
 # Pandas: Data Visualization
 """
+import pandas as pd
+import numpy as np
 """
 # Warm up
 
@@ -14,7 +16,7 @@ Install `matplotlib` and use it to plot the following functions:
 """
 # Democracy of the US
 
-Load the `electoral-democracy-index.csv` file, which contains data on V-Dem's country/year-level democracy index.
+Load the [`datasets/electoral-democracy-index.csv`](https://ourworldindata.org/democracy) file, which contains data on V-Dem's country/year-level democracy index.
 - Plot United States data over the years as a line plot.
 - Fit a polynomial of degree 4 through the data.
 - Clearly label you graph.
@@ -46,12 +48,61 @@ Hint: use `numpy.random.exponential` to generate random variables following the 
 """
 # GDP
 
-Load the `gdp-per-capita-worldbank.csv` dataset.
+Load the [`datasets/gdp-per-capita-worldbank.csv`](https://ourworldindata.org/grapher/gdp-per-capita-worldbank) dataset.
 Plot United States's GDP per capita using a line plot.
-
-GDP data taken from World Bank (2023) – with minor processing by Our World in Data.
 """
 #EMPTYCELL
+
+
+"""
+# Democratic Backslash, revisited
+
+Load the [`datasets/electoral-democracy-index.csv`](https://ourworldindata.org/democracy) and [`datasets/population.csv`](https://ourworldindata.org/population-growth) datasets.
+For each year (with sufficient data), calculate a population weighted global democracy index.
+Plot your data.
+What trend do you see? 
+"""
+df = pd.read_csv("datasets/electoral-democracy-index.csv")
+df = df.rename(columns = {
+    'Electoral democracy index (best estimate, aggregate: average)': "Democracy"
+})
+popdf = pd.read_csv("datasets/population.csv")
+popdf = popdf.rename(columns = {
+    'Population - Sex: all - Age: all - Variant: estimates': "Population"
+})
+#ANSWER
+df = pd.read_csv("datasets/electoral-democracy-index.csv")
+df = df.rename(columns = {
+    'Electoral democracy index (best estimate, aggregate: average)': "Democracy"
+})
+popdf = pd.read_csv("datasets/population.csv")
+popdf = popdf.rename(columns = {
+    'Population - Sex: all - Age: all - Variant: estimates': "Population"
+})
+#NEWCELL
+years = df["Year"].unique()
+global_dem_index = {}
+
+for year in years:
+    df_year = df[df["Year"] == year].dropna()
+    popdf_year = popdf[popdf["Year"] == year].dropna()
+    
+    common_countries = list(set(df_year["Entity"]) & set(popdf_year["Entity"]))
+    
+    df_year = df_year.set_index("Entity")
+    popdf_year = popdf_year.set_index("Entity")
+    
+    dem_vec = df_year.loc[common_countries]["Democracy"]
+    pop_vec = popdf_year.loc[common_countries]["Population"]
+    if len(dem_vec) == 0:
+        continue
+
+    global_democracy_index = dem_vec.dot(pop_vec) / pop_vec.sum()
+    global_dem_index[year] = global_democracy_index
+#NEWCELL
+global_dem = pd.DataFrame(global_dem_index, index=["Democracy"]).transpose()
+global_dem.plot()
+
 
 
 """
