@@ -73,9 +73,6 @@ Hint: use [`np.cov`](https://numpy.org/doc/stable/reference/generated/numpy.cov.
 """
 You should obtain 0 (up to any small rounding error). In fact, we always have for *any* sample that $Cov(\hat{y}_i, \hat{u}_i) = 0$.
 The fitted values and the residuals are uncorrelated.
-
-Moreover, $Cov(\hat{u}_i, f(x_i)) = 0$ for any function $f$.
-This is known as the Conditional Expectation Function (CEF) Decomposition property.
 """
 
 """
@@ -206,8 +203,8 @@ df["residual"] = df["logGDP"] - df["predicted_logGDP"]
 result = sm.ols(formula="ladder ~ residual", data=df).fit()
 print(result.params["residual"])
 """
-This result is known as the Frisch-Waugh-Lovell theorem or the regression anatomy theorem.
+This result is known as the Frisch-Waugh-Lovell theorem or the regression anatomy formula.
 
 We thus have a new interpretation of $\beta_1$: 
-$residual$ is `logGDP` after the effect of `freedom` has been partialled out, and $\beta_1 = \beta_1'$ effect of `logGDP` on `ladder` after the effect of `freedom` has been partialled out.
+$\text{residual}$ is `logGDP` after the effect of `freedom` has been partialled out, and $\beta_1 = \beta_1'$ effect of `logGDP` on `ladder` after the effect of `freedom` has been partialled out.
 """

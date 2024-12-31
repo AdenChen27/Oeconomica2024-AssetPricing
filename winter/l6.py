@@ -6,7 +6,7 @@ Instead, you will be given a sequence of tasks, and you will Google you way thro
 
 Hint 1: start by googling the terms in **bold**.
 
-Hint 2: the official pandas documentation should be your friend.
+Hint 2: the official [pandas documentation](https://pandas.pydata.org/docs/) should be your friend.
 """
 """
 # csv
@@ -23,7 +23,7 @@ Inspect the csv file in the notebook by running the following code.
 df
 
 """
-# DataFrane Indexing
+# DataFrame Indexing
 - Find out what a DataFrame is and how it is different from a list or tuple.
 - Learn how to **index** a DataFrame.
 
