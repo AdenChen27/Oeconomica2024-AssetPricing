@@ -75,6 +75,6 @@ Define a function that takes in two numbers as input and outputs their product.
 """
 # Exercise 2
 
-Google "python **typing**" and read about it. Add type hints using typing for the function you defined above.
+Google "python **typing**" and "mypy" and read about it. (Find out the difference between `mypy` and python's default type checking system. Why is `mypy` better?) Add type hints using typing for the function you defined above.
 *Always* use typing when possible. It will save you loads of time debugging.
 """
