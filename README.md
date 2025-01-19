@@ -1,1 +1,1 @@
-# Oeconomica2024-MFE
+# Oeconomica2024 Asset Pricing Cohort

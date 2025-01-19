@@ -1,15 +1,6 @@
 """
 # Functions
 
-Note: These notebooks are designed to quickly introduce to *programming*, not *computer science*.
-
-- You do not need to know exactly how everything works, but make sure you have a rough idea of what each line of code means.
-- Your final goal is to know how to code (with aid of the Internet).
-- You may skip over all explanation, but do run all the code.
-- The explanations are terse. If you have question, Google. If you don't, find some question to Google.
-
-Knowing how to Google and ChatGPT is vary useful, but to be a Good Googler, you'll need to know the correct vocabulary, which is displayed in **bold** in this notebook.
-
 You've seen plenty of examples of functions.
 It's time to formally introduce them.
 """
@@ -77,4 +68,48 @@ Define a function that takes in two numbers as input and outputs their product.
 
 Google "python **typing**" and "mypy" and read about it. (Find out the difference between `mypy` and python's default type checking system. Why is `mypy` better?) Add type hints using typing for the function you defined above.
 *Always* use typing when possible. It will save you loads of time debugging.
+"""
+
+"""
+# Exercise 3
+
+Define a function that takes in two lists as input, interpret them as vectors, and outputs their distance.
+"""
+#EMPTYCELL
+
+
+"""
+# Exercise 4
+
+Using your function above, define a new function that takes in a list `vec` of length 3 as input and outputs the sum of
+1. the distance between `vec` and the vector (1, 4, 6)
+2. the distance between `vec` and the vector (2, 8, 3)
+3. the distance between `vec` and the vector (7, 1, 9)
+"""
+#EMPTYCELL
+
+"""
+# Exercise 5
+
+Find an approximate minimum of the function you defined above and the input that achieves that (approximate) minimum. (This is know as the Fermat point.)
+
+You may proceed in the following steps:
+1. Narrow the search space down. An educated guess is that if the minimum is attained at (x, y, z), then we know -100 <= x <= 100. You can narrow it down further.
+2. We calculate the value of the function on a subset of points in our search space. The finer the set of points, the more accurate our solution will be.
+
+You can start with something like this:
+```python
+for x in range(x_min, x_max, epsilon):
+    for y in range(y_min, y_max, epsilon):
+        for z in range(z_min, z_max, epsilon):
+            calculate the function value at (x, y, z)
+```
+What does `epsilon` do?
+"""
+#EMPTYCELL
+
+
+"""
+Such optimization problems are extreme common in economics.
+Oftentimes, analytic solutions can be hard to even impossible to find, and your only resort will be to find approximate solutions computationally.
 """

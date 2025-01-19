@@ -99,7 +99,7 @@ This time do the same thing using a for loop.
 
 Hint 1: you do not need to use a list to store the relevant numbers.
 
-Hint 2: in each iteration, add to you sum one more number.
+Hint 2: in each iteration, add to your sum one more number.
 """
 #EMPTYCELL
 
@@ -108,9 +108,58 @@ Hint 3:
 your code should look something like:
 ```
 sum_of_numbers = 0
-for x between 1 and 7777:
-    if x a multiple:
+for all x such that 1 <= x <= 7777:
+    if x a multiple of 7:
         sum_of_numbers += x
 ```
 the last line of which is equivalent to `sum_of_numbers = sum_of_numbers + x`.
 """
+
+"""
+## Exercise 4:
+
+1. Using a for loop, find the *first* occurrence of the character "T" in the following DNA sequence.
+2. Using a for loop, find *all* occurrences of the character "T" in the following DNA sequence. You should obtain a list of indexes.
+
+Note that these are inverses of "indexing."
+
+Hint: you might need to use `break` or `continue`.
+"""
+string = 'GCGGTCATCTTTGCACCTAAGACAAACACCCGGACACCCATATCTGTCAATCTACGCGTCTGATCTGGTGCATTCCCCATCACAATTTATCCGAATCCTTTGACTTCCTGTCTGTTCCCGGCCGTGTGTAGGTTGACGGCCGACGTAACCCATGGTCGGAACAATTGACGTCCTGACATCCCTGCCGCGATCAACGAGGTGCCCAACACATGGGGTCTATCCTTGCTCGAAATACGAATACGCTGAAGGATATCGTTTATGACCCCTGCGCTAAGCCGGAAAGTCGGTTTGTACCCCACGTCAGGTCGTAAGGAAAACCCGCGGGAGACGAAACAAAGCACTCCACGCCGGTAAGTCTTCGCTGCAATGAAATTCGGACAGTCGCGTACCGTTTCGCGATTCCACCATCCATTCCTCCTAAGATGTCGGCCACTATCATTGCAATGAGGGGGGGCGCCGATACGCCACTCGCGCCACTTTAACCATTAGCGCCTGAATTCGGATTTCACCGTGGTCACTGGAACGAGGCGAATCGGCGCGTAGAGTAGGCCCTATTTTTATCAGCTGAAATGCTGAATACCTCCAACTAAGAATTCATTTATAGCCCCGTTGCTTGCGTGTAGGCAAAATCGAACTCGGCCAAAGCTACCGTGAAGGAGCTGATACCGAATCTATGGATATGGTTCACGTTACGACATCATCCCCGTAATCCGAAAGAGTCGTCGTCAACATGTACCTCAATCGGTTACGCTTATTTGGAGTCCCGTCGTACCTCGACGTCCTATTCACGGGTAGATGCCACGTGGCGTCCGTTTTTGGCACCCCGAGTCATTGCATTTTTCGTTTCCACACAGATTATTAGGCAAACTTTCGCGTAAGCGATTCCCTGTGCCGCACGGTAAAGCCGATGTTTGCAGCAAGCGCCTGTCGTGGAGAGCTTAAATGCAATGAGTAAGTTACAGAGAGGAGTGAGCTGTGCAACACACTGAGACGGTAACTA'
+
+"""
+## Exercise 5:
+
+In exercise 4 your obtained a list of indexes where the character "T" occurred in the provided string.
+Check using a loop that the list you obtained is correct.
+"""
+#EMPTYCELL
+
+
+"""
+## Exercise 6:
+
+Find *all* occurrences of the sequence "ATCG" in the string provided above.
+
+Hint: you need to use a nested loop (there are simpler approaches using other string methods, but do make sure you know how to write a nested loop).
+
+(Look up the Knuth–Morris–Pratt algorithm and Aho–Corasick algorithm if you want more efficient solutions. They are much harder to implement.)
+"""
+#EMPTYCELL
+
+"""
+## Exercise 7:
+
+Calculate the dot product of two vectors (provided as lists).
+"""
+vec1 = [-71, 79, 45, 33, 40, -46, 28, 18, 83, -9, 29, 15, 81, 41, -23, -85, -93, 96, 63, 8, 31, 35, 81, 7, -87]
+vec2 = [24, 34, -75, -18, -80, 46, 12, 86, 26, -78, 49, -98, -61, 89, -90, 88, -71, 14, 12, 28, 65, 40, 78, -66, -61]
+
+"""
+## Exercise 8:
+
+Find the largest element in the following list and its position without using the function `max`.
+
+Hint: create auxiliary variables storing the position of the maximum among the elements that you have examined.
+"""
+vec = [-71, 79, 45, 33, 40, -46, 28, 18, 83, -9, 29, 15, 81, 41, -23, -85, -93, 96, 63, 8, 31, 35, 81, 7, -87]
