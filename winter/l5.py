@@ -91,7 +91,7 @@ Using your function above, define a new function that takes in a list `vec` of l
 """
 # Exercise 5: Pick and Choose
 
-Find an approximate minimum of the function you defined above and the input that achieves that (approximate) minimum. (This is know as the Fermat point.)
+Find an approximate minimum of the function you defined above and the input that achieves that (approximate) minimum. (This is known as the Fermat point.)
 
 You may proceed in the following steps:
 1. Narrow the search space down. An educated guess is that if the minimum is attained at (x, y, z), then we know -100 <= x <= 100. You can narrow it down further.
@@ -104,7 +104,7 @@ for x in np.linspace(x_min, x_max, N):
         for z in np.linspace(z_min, z_max, N):
             calculate the function value at (x, y, z)
 ```
-Find out what `np.linspaec` does [here](https://numpy.org/doc/2.1/reference/generated/numpy.linspace.html).
+Find out what `np.linspace` does [here](https://numpy.org/doc/2.1/reference/generated/numpy.linspace.html).
 What does `N` do?
 """
 import numpy as np
@@ -123,7 +123,7 @@ for x in np.linspace(x_min, x_max, N):
                 cur_min_vec = (x, y, z)
 
 """
-Such optimization problems are extreme common in economics.
+Such optimization problems are extremely common in economics.
 Oftentimes, analytic solutions can be hard to even impossible to find, and your only resort will be to find approximate solutions computationally.
 """
 
