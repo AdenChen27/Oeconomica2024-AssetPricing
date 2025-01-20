@@ -89,7 +89,7 @@ Using your function above, define a new function that takes in a list `vec` of l
 #EMPTYCELL
 
 """
-# Exercise 5
+# Exercise 5: Pick and Choose
 
 Find an approximate minimum of the function you defined above and the input that achieves that (approximate) minimum. (This is know as the Fermat point.)
 
@@ -122,14 +122,13 @@ for x in np.linspace(x_min, x_max, N):
             if f((x, y, z)) < f(cur_min_vec):
                 cur_min_vec = (x, y, z)
 
-
 """
 Such optimization problems are extreme common in economics.
 Oftentimes, analytic solutions can be hard to even impossible to find, and your only resort will be to find approximate solutions computationally.
 """
 
 """
-# Exercise 6
+# Exercise 6: Gradient Descent
 
 Solve the problem above using gradient descent. (Yes, of course for this problem you can find the solution analytically by setting the gradient to zero.)
 Hint: the gradient at `(x, y, z)` is `(2*(3*x - 10), 2*(3*y - 13), 2*(3*z - 17))`.
@@ -143,3 +142,20 @@ for i in range(100):
     x += epsilon*(-1)*(3*x - 10)
     y += epsilon*(-1)*(3*y - 13)
     z += epsilon*(-1)*(3*z - 17)
+
+"""
+# Exercise 7: Fixed Point Iteration
+
+Consider the function
+$$
+    f(x) = \frac{1}{2}\left( x + \frac{a}{x} \right)
+$$
+for some constant $a$. Note that this is a contraction on the domain $(\sqrt{a / 3}, \infty)$
+Find the fixed point of this function using fixed point iteration.
+"""
+a = 100
+
+"""
+This is a fairly trivial problem, but the same idea can be used in many other problems such as solving ordinary differential equations by virtue of the [Picard-Lindelöf theorem](https://en.wikipedia.org/wiki/Picard%E2%80%93Lindel%C3%B6f_theorem).
+"""
+
