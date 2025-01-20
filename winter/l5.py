@@ -97,19 +97,49 @@ You may proceed in the following steps:
 1. Narrow the search space down. An educated guess is that if the minimum is attained at (x, y, z), then we know -100 <= x <= 100. You can narrow it down further.
 2. We calculate the value of the function on a subset of points in our search space. The finer the set of points, the more accurate our solution will be.
 
-You can start with something like this:
+You can start with something like this (you will need to import numpy using `import numpy as np` to use the function `np.linspace`):
 ```python
-for x in range(x_min, x_max, epsilon):
-    for y in range(y_min, y_max, epsilon):
-        for z in range(z_min, z_max, epsilon):
+for x in np.linspace(x_min, x_max, N):
+    for y in np.linspace(y_min, y_max, N):
+        for z in np.linspace(z_min, z_max, N):
             calculate the function value at (x, y, z)
 ```
-What does `epsilon` do?
+Find out what `np.linspaec` does [here](https://numpy.org/doc/2.1/reference/generated/numpy.linspace.html).
+What does `N` do?
 """
-#EMPTYCELL
+import numpy as np
+
+#ANSWER
+import numpy as np
+N = 100
+x_min = y_min = z_min = 0
+x_max = y_max = z_max = 10
+
+cur_min_vec = (0, 0, 0)
+for x in np.linspace(x_min, x_max, N):
+    for y in np.linspace(y_min, y_max, N):
+        for z in np.linspace(z_min, z_max, N):
+            if f((x, y, z)) < f(cur_min_vec):
+                cur_min_vec = (x, y, z)
 
 
 """
 Such optimization problems are extreme common in economics.
 Oftentimes, analytic solutions can be hard to even impossible to find, and your only resort will be to find approximate solutions computationally.
 """
+
+"""
+# Exercise 6
+
+Solve the problem above using gradient descent. (Yes, of course for this problem you can find the solution analytically by setting the gradient to zero.)
+Hint: the gradient at `(x, y, z)` is `(2*(3*x - 10), 2*(3*y - 13), 2*(3*z - 17))`.
+"""
+#EMPTYCELL
+#ANSWER
+epsilon = 0.0001
+x, y, z = cur_min_vec
+
+for i in range(100):
+    x += epsilon*(-1)*(3*x - 10)
+    y += epsilon*(-1)*(3*y - 13)
+    z += epsilon*(-1)*(3*z - 17)
